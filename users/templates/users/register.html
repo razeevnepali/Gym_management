@@ -1,0 +1,32 @@
+{% extends "member/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 log-pa">Join Today</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <input type="file" name="image">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-outline-info log-bt"  type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+
+        </div>
+
+    </div>  
+</div>  
+<div class="col-md-4">
+    <img src="{% static "Photos/gym.jpg" %}">
+</div>
+
+{% endblock content %}    

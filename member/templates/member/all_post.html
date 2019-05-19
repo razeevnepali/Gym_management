@@ -1,0 +1,35 @@
+{% extends "member/base.html" %}
+{% load static %}
+{% block content %}
+<div class="content-section">
+  <div class="col-md-8">
+        <h3>New Posts</h3>
+        <!-- <p class='text-muted'>You can put any information here you'd like. -->
+            {% for post in unapproved_post %}
+            <article class="media wid-all">
+              {% if post.author.Profile.image %}
+              <img class="rounded-circle article-img" src="{{ post.author.Profile.image.url }}" alt="">
+              {% else %}
+              <img class="rounded-circle article-img" src="{% static 'img/default.jpg' %}" alt="">
+              {% endif %}
+              <div class="row marin-leri">
+              <div class="media-body">
+                  <h5 style="width: 30ch; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><a href="{% url 'post-detail' post.id %}" style="color: black">{{ post.title }}</a></h5>
+                  <h6>{{ post.content }}</h6>
+                  <p>{{ user.author }}</p>
+              </div>
+              <div>
+                <a href="{% url 'approve-post' post.pk %}">
+                  <button class="btn btn-secondary brn-sm mt-1 mb-1 acep-pri">Accept</button>
+                </a>  
+                <a href="{% url 'approve-post' post.pk %}">
+                  <button class="btn btn-danger brn-sm mt-1 mb-1 dec-sec">Decline</button>
+                </a>
+              </div>    
+            </div>
+            </article>
+            {% endfor %}
+        </p>
+      </div>
+    </div>
+{% endblock content %} 

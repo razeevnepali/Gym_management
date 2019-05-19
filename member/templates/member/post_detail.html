@@ -1,0 +1,65 @@
+{% extends "member/base.html" %}
+{% load static %}
+{% block content %}
+    <article class="media content-section">
+        {% if object.author.Profile.image %}
+        <img class="rounded-circle article-img" src="{{ object.author.Profile.image.url }}">
+        {% else %}
+        <img class="rounded-circle article-img" src="{% static 'Photos/default.jpg' %}">
+        {% endif %}
+            <div class="media-body hfon-dec">
+              <div class="article-metadata">
+                <a class="mr-2 font-inc" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
+                <small class="text-muted fnt-clr">{{ object.date_posted|date:"F d, Y" }}</small>
+                {% if object.author == user %}
+                    <div>
+                            <a class="btn btn-secondary brn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+                            <a class="btn btn-danger brn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+                    </div>
+                    
+                {% else %}
+                <div>
+                    <!-- <a class="btn btn-secondary brn-sm mt-1 mb-1" href="{% url 'approve-post' object.pk %}">Approve</a> -->
+                </div>
+                {% endif %}
+              </div>
+              <h2 class="article-title">{{ object.title }}</h2>
+              <p class="article-content">{{ object.content }}</p>
+            </div>
+            
+    </article>
+    {% if user.is_authenticated %}
+    {% if not user.is_superuser %}
+    <div class="row">
+    <div class="col-md-12">
+        <h1 class="rec">Recommendations</h1>
+        {% for item in recommendations %}
+        <article class="media content-section">
+            
+            {% if item.author.Profile.image %}
+            <img class="rounded-circle article-img" src="{{ item.author.Profile.image.url }}">
+            {% else %}
+            <img class="rounded-circle article-img" src="{% static 'Photos/default.jpg' %}">
+            {% endif %}
+                <div class="media-body">
+                  <div class="article-metadata">
+                    {% if item.author %}
+                    <a class="mr-2 font-inc" href="{% url 'user-posts' item.author.username %}">{{ item.author }}</a>
+                    {% endif %}
+                    <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
+                  </div>
+                <div> 
+                  <h2><a class="article-title" href="{% url 'post-detail' item.id %}">{{ item.title }}</h2>
+                  <p class="article-content">{{ item.content }}</p>
+                </div>
+        </article>
+        {% endfor %}
+
+      </div>
+     
+    </div>
+    
+  </div>
+  {% endif %} 
+  {% endif %}   
+{% endblock content %}    

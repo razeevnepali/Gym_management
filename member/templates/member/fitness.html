@@ -1,0 +1,160 @@
+{% extends "member/base.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<div class="container">
+    <!-- <h1>Fitness Page</h1> -->
+    <!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <!-- <meta charset="utf-8">
+        <title>Zymster | Home</title> -->
+        <link rel="stylesheet" type="text/css" href='{% static 'member/style.css' %}'>
+    </head>
+  <body>
+    <br>
+    <br>
+    <!---Why Fitness-->
+        <div id="fitness" class="fitness">
+          <div class="container">
+            <h3  style="text-align: center">Wh<u style="color: red">y Fitness</u>s</h3>
+            <p style="text-align: center">"Fit is not a destination it is a way of life"</p>
+            <div class="row">
+              <div class="col-lg-3 col-mg-3">
+                <div class="fit">
+                  <img src="{% static "Photos/fruit.jpg" %}" height =300px; width = 300px;alt="Team">
+                  </div>
+                <h1>Eat Fruits Daily</h1>
+                <p>An apple a day keeps doctor away. Apple is good for heart.It helps to lower the risk of diabetes. An apple a day keeps doctor away. Apple is good for heart.It helps to lower the risk of diabetes</p><br>
+              </div>
+
+              <div class="col-lg-3 col-mg-3">
+                <div class="fit">
+                  <img src="{% static "Photos/run.jpg" %}" height =300px; width = 300px;alt="Team">
+                  </div>
+                <h1>Running</h1>
+                <p>It increases endurance, builds muscle to maintain an optimal body fat composition, promotes cardiovascular health, strengthens the heart, and even improves your overall mood </p><br>
+              </div>
+
+              <div class="col-lg-3 col-mg-3">
+                <div class="fit">
+                  <img src="{% static "Photos/fruit1.jpg" %}" height =300px; width = 300px;alt="Team">
+                  </div>
+                <h1>Green Vegetables</h1>
+                <p>Leafy green vegetables are an important part of a healthy diet. They're packed with vitamins, minerals and fiber but low in calories. Eating a diet rich in leafy greens can offer numerous health benefits including reduced risk of obesity, heart disease, high blood pressure and mental decline</p><br>
+              </div>
+
+              <div class="col-lg-3 col-mg-3">
+                <div class="fit">
+                  <img src="{% static "Photos/sleeep.jpg" %}" height =300px; width = 300px;alt="Team">
+                  </div>
+                <h1> Proper sleep</h1>
+                <p>Sleep and Physical Health. A good night's sleep is also important for helping your body function at its best. Healthy sleep can help your body better regulate blood sugar levels, keep your immune system functioning properly and even improve your heart health by decreasing stress.</p><br>
+              </div>
+
+              </div>
+            </div>
+          </div>
+
+      <!--End About-->
+
+      <br>
+      <br>
+    <!--Our Team-->
+        <div id="team" class="team">
+          <div class="container">
+            <h3 style="text-align: center">O<u style="color: red">ur Tea</u>m</h3>
+            <div class="row">
+              <div class="col-lg-4 col-mg-4 post">
+                  <div class="teamz">
+                  <h1>Ram Pahari</h1>
+                  <h2>Trainer, GymKapan</h2>
+                  <img class = "Imagee" src="{% static "Photos/ram.jpg" %}" height =300px; width = 300px;alt="Team">
+                </div>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+                  <!-- <img src="{% static "Photos/pinterest.png" %}" height =30px; width = 30px; alt="Team"> -->
+                  <img src="{% static "Photos/fb.png" %}" height =30px; width = 30px; alt="Team">
+                  <img src="{% static "Photos/twitter.png" %}" height =30px; width = 30px; alt="Team"">
+              </div>
+
+
+              <div class="col-lg-4 col-mg-4 post">
+                <div class="teamz">
+                  <h1>Rajeev Nepali</h1>
+                  <h2>Trainer, GymKapan</h2>
+                  <img src="{% static "Photos/rajeev.jpg" %}" height =300px; width = 300px;alt="Team">
+                </div>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+                  <!-- <img src="{% static "Photos/pinterest.png" %}" height =30px; width = 30px; alt="Team"> -->
+                  <img src="{% static "Photos/fb.png" %}" height =30px; width = 30px; alt="Team">
+                  <img src="{% static "Photos/twitter.png" %}" height =30px; width = 30px; alt="Team"">
+              </div>
+
+
+              <div class="col-lg-4 col-mg-4 post">
+                <div class="teamz">
+                  <h1>Surendra Thapa</h1>
+                  <h2>Trainer, GymKapan</h2>
+                  <img src="{% static "Photos/surendra.jpg" %}" height =300px; width = 300px;alt="Team">
+                </div class = "social">
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+                  <!-- <img src="{% static "Photos/pinterest.png" %}" height =30px; width = 30px; alt="Team"> -->
+                  <img src="{% static "Photos/fb.png" %}" height =30px; width = 30px; alt="Team">
+                  <img src="{% static "Photos/twitter.png" %}" height =30px; width = 30px; alt="Team"">
+              </div>
+              </div>
+            </div>
+          </div>
+
+      <!--End Team-->
+
+<br>
+<br>
+<br>
+<!---About-->
+    <div id="about" class="about">
+      <div class="container">
+        <h3>A<u style="color: red">bout u</u>s</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the<br>
+        industry's standard dummy text ever since the 1500s, when an unknown printer </p>
+        <div class="row">
+          <div class="col-lg-4 col-mg-4 square">
+            <div class="square1">
+              <img src="{% static "Photos/brainstorm.png" %}">
+              </div>
+            <h1>Our Mission</h1>
+            <p>Our mission is to provide an Entertaining, Educational, Friendly and Inviting, Functional and Innovative experience of uncompromising quality that meets the health and fitness needs of the entire family.</p><br>
+            <a href="">Learn More</a>
+          </div>
+
+          <div class="col-lg-4 col-mg-4 square">
+            <div class="square2">
+              <img src="{% static "Photos/mission.png" %}">
+              </div>
+            <h1>Our Vision</h1>
+            <p>To enhance the quality of life in the communities we serve through our fitness philosophy, facilities, programs, and products and to instill in the lives of people everywhere the value of health and fitness.</p><br>
+            <a href="">Learn More</a>
+          </div>
+
+          <div class="col-lg-4 col-mg-4 square">
+            <div class="square3">
+              <img src="{% static "Photos/strategy.png" %}">
+            </div>
+            <h1>Our Strategy</h1>
+            <p>To provide the best guidlines to the path of fitness. Also to provide the best workout plans and make the people experience best fit life.To make friendly environment with in the gym members and share fitness knowledge.</p><br>
+            <a href="">Learn More</a>
+          </div>
+          </div>
+        </div>
+      </div>
+
+  <!--End About-->
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+  </body>
+</html>
+</div>
+{% endblock content %}   

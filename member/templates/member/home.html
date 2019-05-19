@@ -1,0 +1,115 @@
+{% extends "member/base.html" %}
+{% load static %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section ">
+          {% if post.author.Profile.image %}
+          <img class="rounded-circle article-img" src="{{ post.author.Profile.image.url }}">
+          {% else %}
+          <img class="rounded-circle article-img" src="{% static 'Photos/default.jpg' %}">
+          {% endif %}
+            <div class="media-body hfon-dec">
+              <div class="article-metadata">
+                <a class="mr-2 font-inc" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+                <small class="text-muted fnt-clr">{{ post.date_posted|date:"F d, Y" }}</small>
+              </div>
+              <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+              <p class="article-content">{{ post.content }}</p>
+            </div>
+          </article>
+    {% endfor %}
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}  
+          <a class="btn btn-outine-info mb-4" href="?page=1">First</a>
+          <a class="btn btn-outine-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}  
+        <a class="btn btn-outine-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outine-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}      
+
+    {% endif %}
+    </div>
+    {% if request.user.is_superuser %}
+      <div class="col-md-6">
+        <div class="content-section">
+          <h3 class="underline">New Registrations</h3>
+            {% for user in users %}
+            <article class="media mar-top">
+              {% if user.Profile.image %}
+              <img class="rounded-circle article-img" src="{{ user.Profile.image.url }}" alt="">
+              {% else %}
+              <img class="rounded-circle article-img" src="{% static 'img/default.jpg' %}" alt="">
+              {% endif %}
+              <div class="row">
+              <div class="media-body marin-leri">
+                  <h5>{{ user.username }}</h5>
+                  <p>{{ user.date_joined }}</p>
+              </div>
+              <a href="{% url 'approve-user' user.pk %}">
+                <button class="btn btn-secondary brn-sm mt-1 mb-1 acep-pri">Accept</button>
+              </a>
+              <a href="{% url 'delete-user' user.pk %}">
+                <button class="btn btn-danger brn-sm mt-1 mb-1 dec-sec">Decline</button>
+              </a>
+            </div>
+            </article>
+            {% endfor %}
+          </p>
+          <a class="btn btn-primary" href="{% url 'all-new-member' %}">
+            <button class="btn btn-primary viewall">View All</button>
+          </a>
+        </div>
+        
+        <div class="content-section">
+          <div class="col-md-12">
+          <h3 class="underline">New Posts</h3>
+          <!-- <p class='text-muted'>You can put any information here you'd like. -->
+              {% for post in unapproved_post %}
+              <article class="media wid-all">
+                {% if post.author.Profile.image %}
+                <img class="rounded-circle article-img" src="{{ post.author.Profile.image.url }}" alt="">
+                {% else %}
+                <img class="rounded-circle article-img" src="{% static 'img/default.jpg' %}" alt="">
+                {% endif %}
+                <div class="row marin-leri">
+                <div class="media-body">
+                    <h5 style="width: 30ch; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><a href="{% url 'post-detail' post.id %}" style="color: black">{{ post.title }}</a></h5>
+                    <p>{{ user.author }}</p>
+                </div>
+                <a href="{% url 'approve-post' post.pk %}">
+                  <button class="btn btn-secondary brn-sm mt-1 mb-1 acep-pri">Accept</button>
+                </a>  
+                <a href="{% url 'delete-post' post.pk %}">
+                  <button class="btn btn-danger brn-sm mt-1 mb-1 dec-sec">Decline</button>
+                </a>  
+              </div>            
+              </article>
+              {% endfor %}
+
+          </p>
+          <a class="btn btn-primary" href="{% url 'all-post' %}">
+          <button class="btn btn-primary viewall">View All</button>
+          </a>
+        </div>
+        </div>
+      </div>
+      
+      {% else %}
+      <div class="col-md-4">
+          <img src="{% static "Photos/gym.jpg" %}">
+      </div>
+      {% endif %}
+    </body>   
+    
+{% endblock content %} 
